@@ -4,14 +4,12 @@ function calcTip(note) {
 }
 
 function getTipPercent(note) {
-  return note > 50 && note < 300 ? 0.15 : 0.20;
+  return note > 50 && note < 300 ? 0.15 : 0.2;
 }
 
-const getTipPercentArrow = (note) => note > 50 && note < 300 ? 0.15 : 0.20;
-
+const getTipPercentArrow = (note) => (note > 50 && note < 300 ? 0.15 : 0.2);
 
 const notes = [125, 555, 44];
-
 
 let billsFor = [];
 for (let i = 0; i < notes.length; i++) {
@@ -27,12 +25,19 @@ notes.forEach((note) => {
 
 let billsWhile = [];
 let index = 0;
-while(index < notes.length) {
+while (index < notes.length) {
   const total = calcTip(notes[index]) + notes[index];
   billsWhile.push(total);
   index += 1;
 }
 
+const billsMap = notes.map((note) => calcTip(note) + note);
+
+const billsMap2 = notes.map((note) => {
+  return calcTip(note) + note;
+});
+
 console.log(billsFor);
 console.log(billsForeach);
 console.log(billsWhile);
+console.log(billsMap);
