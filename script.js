@@ -33,7 +33,17 @@ while (index < notes.length) {
 
 const tipsMap = notes.map((note) => calcTip(note));
 
-console.log(tipsFor);
+/* console.log(tipsFor);
 console.log(tipsForeach);
 console.log(tipsWhile);
-console.log(tipsMap);
+console.log(tipsMap); */
+
+let totals = [];
+for (let i = 0; i < notes.length; i++) {
+  const total = notes[i] + tipsFor[i];
+  totals.push(total);
+}
+
+console.log(totals);
+
+
