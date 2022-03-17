@@ -1,39 +1,38 @@
-const marcelWeight = 92;
-const bernardWeight = 78;
-
-const marcelHeight = 1.95;
-const bernardHeight = 1.69;
-
-const fixedFloatValue = 4;
-
-const bernardName = 'Bernard';
-const marcelName = 'Marcel';
-
-const bernardIMC = bernardWeight / (bernardHeight * bernardHeight);
-const marcelIMC = marcelWeight / (marcelHeight * marcelHeight);
-
-const bernardIMCToFixed = bernardIMC.toFixed(fixedFloatValue);
-const marcelIMCToFixed = marcelIMC.toFixed(fixedFloatValue);
-
-console.log(bernardIMC);
-console.log(marcelIMC);
-
-const bernardHigherIMC = bernardIMC > marcelIMC;
-
-console.log(bernardHigherIMC);
-
-
-if (bernardHigherIMC) {
-  console.log(`Bernard a un IMC (${bernardIMCToFixed}) plus élevé que Marcel (${marcelIMCToFixed})`);
-} else {
-  console.log('Marcel a un IMC (' + marcelIMCToFixed + ') plus élevé que Bernard(' + bernardIMCToFixed + ')');
+function calcTip(note) {
+  const tipPercent = getTipPercent(note);
+  return note * tipPercent;
 }
 
-const higherName = bernardHigherIMC ? bernardName : marcelName;
-const lowerName = bernardHigherIMC ? marcelName : bernardName;
+function getTipPercent(note) {
+  return note > 50 && note < 300 ? 0.15 : 0.20;
+}
 
-const higherIMCToFixed = bernardHigherIMC ? bernardIMCToFixed : marcelIMCToFixed;
-const lowerIMCToFixed = bernardHigherIMC ? marcelIMCToFixed : bernardIMCToFixed;
+const getTipPercentArrow = (note) => note > 50 && note < 300 ? 0.15 : 0.20;
 
-console.log(`${higherName} a un IMC (${higherIMCToFixed}) plus élevé que ${lowerName} (${marcelIMCToFixed})`);
 
+const notes = [125, 555, 44];
+
+
+let billsFor = [];
+for (let i = 0; i < notes.length; i++) {
+  const total = calcTip(notes[i]) + notes[i];
+  billsFor.push(total);
+}
+
+let billsForeach = [];
+notes.forEach((note) => {
+  const total = calcTip(note) + note;
+  billsForeach.push(total);
+});
+
+let billsWhile = [];
+let index = 0;
+while(index < notes.length) {
+  const total = calcTip(notes[index]) + notes[index];
+  billsWhile.push(total);
+  index += 1;
+}
+
+console.log(billsFor);
+console.log(billsForeach);
+console.log(billsWhile);
